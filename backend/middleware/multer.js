@@ -7,6 +7,6 @@ let storage = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
-let uploade = multer({ storage });
+let upload = multer({ storage });
 
 export default upload;
