@@ -3,6 +3,15 @@ import Product from "../model/productModel.js";
 
 export const addProduct = async (req, res) => {
   try {
+    if (
+      !req.files.image1 ||
+      !req.files.image2 ||
+      !req.files.image3 ||
+      !req.files.image4
+    ) {
+      return res.status(400).json({ message: "All images are required." });
+    }
+
     let { name, description, price, category, subCategory, sizes, bestseller } =
       req.body;
 
