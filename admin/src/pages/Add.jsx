@@ -50,7 +50,6 @@ function Add() {
         setImage3(null);
         setImage4(null);
         setPrice("");
-        setBestSeller(false);
         setCategory("Men");
         setSubCategory("TopWear");
         setBestSeller(false);
