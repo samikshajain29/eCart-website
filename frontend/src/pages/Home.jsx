@@ -2,6 +2,7 @@ import React from "react";
 import Background from "../components/Background";
 import Hero from "../components/Hero";
 import { useState, useEffect } from "react";
+import Product from "./Product";
 
 function Home() {
   let heroData = [
@@ -27,6 +28,7 @@ function Home() {
           heroData={heroData[heroCount]}
         />
       </div>
+      <Product />
     </div>
   );
 }
