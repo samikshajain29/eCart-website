@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { authDataContext } from "./authContext";
 import axios from "axios";
 
@@ -12,7 +12,7 @@ function ShopContext({ children }) {
 
   const getProducts = async () => {
     try {
-      let result = await axios.post(serverUrl + "/api/product/list");
+      let result = await axios.get(serverUrl + "/api/product/list");
       console.log(result.data);
       setProducts(result.data);
     } catch (error) {
