@@ -3,6 +3,7 @@ import Background from "../components/Background";
 import Hero from "../components/Hero";
 import { useState, useEffect } from "react";
 import Product from "./Product";
+import OurPolicy from "../components/OurPolicy";
 
 function Home() {
   let heroData = [
@@ -29,6 +30,7 @@ function Home() {
         />
       </div>
       <Product />
+      <OurPolicy />
     </div>
   );
 }
