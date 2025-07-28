@@ -7,16 +7,17 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { IoMdHome } from "react-icons/io";
 import { HiOutlineCollection } from "react-icons/hi";
 import { MdContacts } from "react-icons/md";
-
 import { userDataContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { authDataContext } from "../context/authContext";
+import { shopDataContext } from "../context/ShopContext";
 import axios from "axios";
 
 function Nav() {
   let { getCurrentUser, userData } = useContext(userDataContext);
   let { serverUrl } = useContext(authDataContext);
-  let [showSearch, setShowSearch] = useState(false);
+  let { showSearch, setShowSearch, search, setSearch } =
+    useContext(shopDataContext);
   let [showProfile, setShowProfile] = useState(false);
   let navigate = useNavigate();
 
@@ -70,7 +71,10 @@ function Nav() {
         {!showSearch && (
           <IoSearchCircleOutline
             className="w-[32px] h-[32px] text-[#000000] cursor-pointer"
-            onClick={() => setShowSearch((prev) => !prev)}
+            onClick={() => {
+              setShowSearch((prev) => !prev);
+              navigate("/collection");
+            }}
           />
         )}
         {showSearch && (
@@ -104,6 +108,10 @@ function Nav() {
             type="text"
             className="lg:w-[50%] w-[80%] h-[60%] bg-[#233533] rounded-[30px] px-[50px] placeholder:text-white text-[white] text-[18px]"
             placeholder="Search Here"
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+            value={search}
           />
         </div>
       )}

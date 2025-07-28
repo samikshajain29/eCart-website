@@ -7,7 +7,7 @@ import Card from "../components/Card";
 
 function Collections() {
   let [showFilter, setShowFilter] = useState(false);
-  let { products } = useContext(shopDataContext);
+  let { products, search, showSearch } = useContext(shopDataContext);
   let [filterProduct, setFilterProduct] = useState([]);
   let [category, setCategory] = useState([]);
   let [subCategory, setSubCategory] = useState([]);
@@ -30,6 +30,11 @@ function Collections() {
 
   const applyFilter = () => {
     let productCopy = products.slice();
+    if (showSearch && search) {
+      productCopy = productCopy.filter((item) =>
+        item.name.toLowerCase().includes(search.toLowerCase())
+      );
+    }
     if (category.length > 0) {
       productCopy = productCopy.filter((item) =>
         category.includes(item.category)
@@ -70,10 +75,10 @@ function Collections() {
 
   useEffect(() => {
     applyFilter();
-  }, [category, subCategory]);
+  }, [category, subCategory, search, showSearch]);
 
   return (
-    <div className="w-[99vw] min-h-[100vh] bg-gradient-to-l from-[#141414] to-[#0c2025] flex items-start flex-col md:flex-row justify-start pt-[70px] overflow-x-hidden z-[2]">
+    <div className="w-[99vw] min-h-[100vh] bg-gradient-to-l from-[#141414] to-[#0c2025] flex items-start flex-col md:flex-row justify-start pt-[70px] overflow-x-hidden z-[2] pb-[110px]">
       <div
         className={`md:w-[30vw] lg:w-[20vw] w-[100vw] md:min-h-[100vh] ${
           showFilter ? "h-[45vh]" : "h-[8vh]"
