@@ -16,7 +16,7 @@ import axios from "axios";
 function Nav() {
   let { getCurrentUser, userData } = useContext(userDataContext);
   let { serverUrl } = useContext(authDataContext);
-  let { showSearch, setShowSearch, search, setSearch } =
+  let { showSearch, setShowSearch, search, setSearch, getCartCount } =
     useContext(shopDataContext);
   let [showProfile, setShowProfile] = useState(false);
   let navigate = useNavigate();
@@ -97,9 +97,12 @@ function Nav() {
             {userData?.name.slice(0, 1).toUpperCase()}
           </div>
         )}
-        <MdOutlineShoppingCart className="w-[30px] h-[30px] text-[#000000] cursor-pointer hidden md:block" />
+        <MdOutlineShoppingCart
+          className="w-[30px] h-[30px] text-[#000000] cursor-pointer hidden md:block"
+          onClick={() => navigate("/cart")}
+        />
         <p className="absolute w-[18px] h-[18px] items-center justify-center bg-black px-[5px] py-[2px] text-white rounded-full text-[9px] top-[10px] right-[23px]  hidden md:block">
-          10
+          {getCartCount()}
         </p>
       </div>
       {showSearch && (
@@ -172,12 +175,15 @@ function Nav() {
           <MdContacts className="w-[28px] h-[28px] text-[white] md:hidden" />
           Contact
         </button>
-        <button className="text-[white] flex items-center justify-center flex-col gap-[2px]">
+        <button
+          className="text-[white] flex items-center justify-center flex-col gap-[2px]"
+          onClick={() => navigate("/cart")}
+        >
           <MdOutlineShoppingCart className="w-[28px] h-[28px] text-[white] md:hidden" />
           Cart
         </button>
         <p className="absolute w-[18px] h-[18px] flex items-center justify-center bg-white px-[5px] py-[2px] text-black font-semibold rounded-full text-[9px] top-[8px] right-[18px]">
-          10
+          {getCartCount()}
         </p>
       </div>
     </div>
