@@ -11,7 +11,7 @@ function CartTotal() {
       </div>
       <div className="flex flex-col gap-2 mt-2 text-sm p-[30px] border-[2px] border-[#4d8890]">
         <div className="flex justify-between text-[white] text-[18px] p-[10px]">
-          <p>subtotal</p>
+          <p>Subtotal</p>
           <p>
             {currency} {getCartAmount()}.00
           </p>
