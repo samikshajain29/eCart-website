@@ -13,6 +13,7 @@ import Product from "./pages/Product";
 import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import PlaceOrder from "./pages/PlaceOrder";
+import Order from "./pages/Order";
 
 function App() {
   let { userData } = useContext(userDataContext);
@@ -113,6 +114,16 @@ function App() {
           element={
             userData ? (
               <PlaceOrder />
+            ) : (
+              <Navigate to="/login" state={{ from: location.pathname }} />
+            )
+          }
+        />
+        <Route
+          path="/order"
+          element={
+            userData ? (
+              <Order />
             ) : (
               <Navigate to="/login" state={{ from: location.pathname }} />
             )
