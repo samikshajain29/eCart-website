@@ -7,9 +7,11 @@ import { useContext } from "react";
 import { shopDataContext } from "../context/ShopContext";
 import { authDataContext } from "../context/AuthContext";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function PlaceOrder() {
   let [method, setMethod] = useState("cod");
+  let navigate = useNavigate();
   const { cartItem, setCartItem, getCartAmount, delivery_fee, products } =
     useContext(shopDataContext);
   let { serverUrl } = useContext(authDataContext);
@@ -64,6 +66,12 @@ function PlaceOrder() {
             { withCredentials: true }
           );
           console.log(result.data);
+          if (result.data) {
+            setCartItem({});
+            navigate("/order");
+          } else {
+            console.log(result.data.message);
+          }
           break;
 
         default:
