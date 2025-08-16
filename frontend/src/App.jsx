@@ -1,4 +1,5 @@
 import React from "react";
+import { ToastContainer, toast } from "react-toastify";
 import Registration from "./pages/Registration";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -14,6 +15,7 @@ import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import PlaceOrder from "./pages/PlaceOrder";
 import Order from "./pages/Order";
+import NotFound from "./pages/NotFound";
 
 function App() {
   let { userData } = useContext(userDataContext);
@@ -129,6 +131,7 @@ function App() {
             )
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

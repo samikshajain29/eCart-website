@@ -79,8 +79,13 @@ export const verifyRazorpay = async (req, res) => {
       await Order.findByIdAndUpdate(orderInfo.receipt, { payment: true });
       await User.findByIdAndUpdate(userId, { cartData: {} });
       res.status(200).json({ message: "Payment Successful" });
+    } else {
+      res.json({ message: "Payment Failed" });
     }
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
+  }
 };
 export const userOrders = async (req, res) => {
   try {

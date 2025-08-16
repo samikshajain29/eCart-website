@@ -6,6 +6,7 @@ import {
   placeOrderRazorpay,
   updateStatus,
   userOrders,
+  verifyRazorpay,
 } from "../controller/orderController.js";
 import adminAuth from "../middleware/adminAuth.js";
 
@@ -15,6 +16,7 @@ const orderRoutes = express.Router();
 orderRoutes.post("/placeorder", isAuth, placeOrder);
 orderRoutes.post("/razorpay", isAuth, placeOrderRazorpay);
 orderRoutes.post("/userorder", isAuth, userOrders);
+orderRoutes.post("/verifyrazorpay", isAuth, verifyRazorpay);
 
 //for Admin
 orderRoutes.post("/list", adminAuth, allOrders);

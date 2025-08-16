@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import Orders from "./pages/Orders.jsx";
@@ -11,6 +12,7 @@ function App() {
   let { adminData } = useContext(adminDataContext);
   return (
     <>
+      <ToastContainer />
       {!adminData ? (
         <Login />
       ) : (
