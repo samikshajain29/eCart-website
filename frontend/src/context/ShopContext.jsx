@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { authDataContext } from "./AuthContext";
 import { userDataContext } from "./UserContext";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const shopDataContext = createContext();
 
@@ -51,6 +52,7 @@ function ShopContext({ children }) {
           { withCredentials: true }
         );
         console.log(result.data);
+        toast.success("Added to cart");
       } catch (error) {
         console.log(error);
       }
@@ -81,6 +83,7 @@ function ShopContext({ children }) {
           { itemId, size, quantity },
           { withCredentials: true }
         );
+        toast.error("Item removed from cart");
       } catch (error) {
         console.log(error);
       }

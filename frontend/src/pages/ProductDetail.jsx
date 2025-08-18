@@ -9,7 +9,6 @@ function ProductDetail() {
   let { productId } = useParams();
   let { products, currency, addtoCart } = useContext(shopDataContext);
   let [productData, setProductData] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const [image, setImage] = useState("");
   const [image1, setImage1] = useState("");
