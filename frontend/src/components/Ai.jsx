@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import ai from "../assets/ai.png";
+import ai from "../assets/ai.webp";
 import { shopDataContext } from "../context/ShopContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
